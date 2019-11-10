@@ -32,9 +32,9 @@ You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here
 ## Project Overview
 
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+1️⃣ [Trello Board](🚫https://trello.com/b/4d9tVEEm)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+1️⃣ [Product Canvas](🚫https://www.notion.so/b77870dacfbb4b44a89f70c4c4c0f2c3?v=a766c357457b459ea823ea52fe804743)
 
 🚫 Replace lorem ipsum with a description of your project
 
