@@ -1,5 +1,6 @@
 name: ydc1
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - _anaconda_depends=2019.03=py37_0
@@ -26,9 +27,11 @@ dependencies:
   - blosc=1.16.3=hd408876_0
   - bokeh=1.2.0=py37_0
   - boto=2.49.0=py37_0
+  - boto3=1.10.19=py_0
+  - botocore=1.13.19=py_0
   - bottleneck=1.2.1=py37h035aef0_1
   - bzip2=1.0.8=h7b6447c_0
-  - ca-certificates=2019.10.16=0
+  - ca-certificates=2019.9.11=hecc5488_0
   - cairo=1.14.12=h8948797_3
   - certifi=2019.9.11=py37_0
   - cffi=1.12.3=py37h2e261b9_0
@@ -94,6 +97,7 @@ dependencies:
   - jedi=0.13.3=py37_0
   - jeepney=0.4=py37_0
   - jinja2=2.10.1=py37_0
+  - jmespath=0.9.4=py_0
   - joblib=0.13.2=py37_0
   - jpeg=9b=h024ee3a_2
   - json5=0.8.4=py_0
@@ -161,7 +165,7 @@ dependencies:
   - numpydoc=0.9.1=py_0
   - olefile=0.46=py37_0
   - openpyxl=2.6.2=py_0
-  - openssl=1.1.1d=h7b6447c_3
+  - openssl=1.1.1d=h516909a_0
   - packaging=19.0=py37_0
   - pandas=0.24.2=py37he6710b0_0
   - pandoc=2.2.3.2=0
@@ -229,6 +233,8 @@ dependencies:
   - ripgrep=0.10.0=hc07d326_0
   - rope=0.14.0=py_0
   - ruamel_yaml=0.15.46=py37h14c3975_0
+  - s3fs=0.3.5=py_0
+  - s3transfer=0.2.1=py37_0
   - scikit-image=0.15.0=py37he6710b0_0
   - scikit-learn=0.20.1=py37h4989274_0
   - scipy=1.1.0=py37hfa4b5c9_1
