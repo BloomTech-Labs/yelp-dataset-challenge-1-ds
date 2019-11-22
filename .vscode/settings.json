@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/Users/haden/anaconda3/bin/python"
+    "python.pythonPath": "/Users/ianforrest/anaconda3/envs/yelp/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
