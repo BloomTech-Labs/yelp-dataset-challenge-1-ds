@@ -1,14 +1,12 @@
 """
 SQLAlchemy models for Yelp Text Analyzer Project
 """
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import \
-    (Column, Integer, String, ForeignKey, DateTime, Float, Binary, Text)
-from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+from flask_sqlalchemy import SQLAlchemy
 
-class Business(Base):
+DB = SQLAlchemy()
+
+class Business(DB.Model):
     """Create class 'Business' for Yelp App
     Business has methods:
     - id
@@ -20,16 +18,18 @@ class Business(Base):
     
     __tablename__ = 'businesses'
     
-    id = Column(String, primary_key = True)
-    name = Column(String(100))
-    location = Column(String(100))
-    reviews = relationship("Review", backref = 'business')
+    id = DB.Column(DB.String, 
+                   primary_key = True)
+    name = DB.Column(DB.String(100), 
+                     nullable = False)
+    location = DB.Column(DB.String(100))
+    reviews = DB.relationship("Review", backref = DB.backref('business', lazy = True)
     
     def __repr__(self):
         return '<BUSINESS {}>'.format(self.name)
 
 
-class Review(Base):
+class Review(DB.Model):
     """Create class 'Review' for Yelp Review Predictor App
     Review has methods:
     - id
@@ -41,10 +41,12 @@ class Review(Base):
     
     __tablename__ = 'reviews'
 
-    id = Column(String, primary_key=True)
-    stars = Column(Float)
-    text = Column(String(150))
-    business_id = Column(String, ForeignKey('business.id'))
+    id = DB.Column(DB.String, primary_key = True)
+    stars = DB.Column(DB.Float)
+    text = DB.Column(DB.String(150))
+    business_id = DB.Column(DB.String, 
+                            DB.ForeignKey('business.id'), 
+                            nullable = False)
 
     def __repr__(self):
         return '<REVIEW {}>'.format(self.text)
