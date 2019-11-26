@@ -16,7 +16,7 @@ API_AUTH = os.getenv('api_key')
 
 def yelp_business_reviews(business_name, location):
     """
-    function to convert a business's 3 most recent reviews from yelp.com and convert them to a pandas dataframe
+    function to pull a business's 3 most recent reviews from yelp.com and convert them to a pandas dataframe
 
     Args:
         business_name (str): business name on yelp.com; spelling must match spelling on yelp.com
