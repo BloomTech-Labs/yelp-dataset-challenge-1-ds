@@ -84,7 +84,7 @@ def yelp_business_reviews(business_name, location):
         df['text'] = df['text'].str.replace('\n', ' ')
 
         # reorganize columns of dataframe
-        # change 'text' column name to 'review_text'
+        # change 'id' column name to 'review_id'
         cols = ['business_name', 'business_id', 'business_location', 'text', 'id', 'rating']
         df = df[cols]
         df = df.rename(columns={"id": "review_id"})
