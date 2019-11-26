@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from .models import Base, Business
+from .models import DB, Business
 
 def create_app():
     # Create and configure the app
