@@ -23,7 +23,7 @@ class Business(DB.Model):
     name = DB.Column(DB.String(100), 
                      nullable = False)
     location = DB.Column(DB.String(100))
-    reviews = DB.relationship("Review", backref = DB.backref('business', lazy = True)
+    reviews = DB.relationship("Review", backref = DB.backref('business', lazy = True))
     
     def __repr__(self):
         return '<BUSINESS {}>'.format(self.name)
