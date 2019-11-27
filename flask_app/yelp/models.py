@@ -49,4 +49,6 @@ class Review(DB.Model):
     def __repr__(self):
         return '<REVIEW {}>'.format(self.text)
     
+DB.create_all()
+    
 
