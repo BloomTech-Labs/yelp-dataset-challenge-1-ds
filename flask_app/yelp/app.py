@@ -1,6 +1,7 @@
 from decouple import config
 from flask import Flask, render_template, request
 from .models import DB, Business
+from api import yelp_business_reviews
 
 def create_app():
     # Create and configure the app
@@ -22,3 +23,21 @@ def create_app():
         return render_template('home.html',
                                title = 'Home',
                                businesses = businesses)
+    
+    # add business and business/<name>
+    @app.route('/business', methods=['POST']) # trigger this if post request (adding to db)
+    @app.route('/business/<name>', methods=['GET']) # trigger this if get request (pulling existing from db)
+    def user(name=None, message=''):
+        name = name or request.values['business_name']
+        try:
+            if request.method == 'POST':
+                add_or_update_user(name)
+                message = "Business {} successfully added!".format(name)
+            reviews = Business.query.filter(Business.name == name).one().reviewss # 'one()' means pull first user
+        except Exception as e:
+            message = "Error adding {}: {}".format(name, e)
+            reviews = []
+        return render_template('user.html', title=name, reviews=reviews,
+                               message=message)
+        
+    return app

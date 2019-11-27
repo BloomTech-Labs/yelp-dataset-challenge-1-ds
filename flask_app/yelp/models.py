@@ -12,18 +12,15 @@ class Business(DB.Model):
     - id
     - name
     - location
-    - reviews
+    - reviews (from linked relationship to 'Review' class)
     
     added __repr__ function to show content of Business class as text (vs. as location in memory)"""
-    
-    __tablename__ = 'businesses'
     
     id = DB.Column(DB.String, 
                    primary_key = True)
     name = DB.Column(DB.String(100), 
                      nullable = False)
-    location = DB.Column(DB.String(100))
-    reviews = DB.relationship("Review", backref = DB.backref('business', lazy = True))
+    business_location = DB.Column(DB.String(100))
     
     def __repr__(self):
         return '<BUSINESS {}>'.format(self.name)
@@ -34,19 +31,20 @@ class Review(DB.Model):
     Review has methods:
     - id
     - text
-    - stars
-    - business_id
+    - rating
+    - business_id (foreign key linked from 'Business' class)
+    - business (relationship identified with 'Business' class, facilitates '.reviews' User method)
     
     added __repr__ function to show content of Review class as text (vs. as location in memory)"""
-    
-    __tablename__ = 'reviews'
 
     id = DB.Column(DB.String, primary_key = True)
-    stars = DB.Column(DB.Float)
+    rating = DB.Column(DB.Float)
     text = DB.Column(DB.String(150))
     business_id = DB.Column(DB.String, 
                             DB.ForeignKey('business.id'), 
                             nullable = False)
+    business = DB.relationship('Business', 
+                               backref = DB.backref('reviews', lazy = True))
 
     def __repr__(self):
         return '<REVIEW {}>'.format(self.text)
