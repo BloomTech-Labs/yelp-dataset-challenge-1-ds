@@ -20,10 +20,10 @@ def create_app():
     # sets title of application
     @app.route('/')
     def root():
-        businesses = Business.query.all()
+        #businesses = Business.query.all()
         return render_template('home.html',
-                               title = 'Home',
-                               businesses = businesses)
+                               title = 'Home')
+                               #businesses = businesses)
     
     # add business and business/<name>
     # @app.route('/business', methods=['POST']) # trigger this if post request (adding to db)

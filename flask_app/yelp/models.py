@@ -22,33 +22,31 @@ class Business(DB.Model):
                      nullable = False)
     business_location = DB.Column(DB.String(100))
     
-    def __repr__(self):
-        return '<BUSINESS {}>'.format(self.name)
+    # def __repr__(self):
+    #     return '<BUSINESS {}>'.format(self.name)
 
 
-class Review(DB.Model):
-    """Create class 'Review' for Yelp Review Predictor App
-    Review has methods:
-    - id
-    - text
-    - rating
-    - business_id (foreign key linked from 'Business' class)
-    - business (relationship identified with 'Business' class, facilitates '.reviews' User method)
+# class Review(DB.Model):
+#     """Create class 'Review' for Yelp Review Predictor App
+#     Review has methods:
+#     - id
+#     - text
+#     - rating
+#     - business_id (foreign key linked from 'Business' class)
+#     - business (relationship identified with 'Business' class, facilitates '.reviews' User method)
     
-    added __repr__ function to show content of Review class as text (vs. as location in memory)"""
+#     added __repr__ function to show content of Review class as text (vs. as location in memory)"""
 
-    id = DB.Column(DB.String, primary_key = True)
-    rating = DB.Column(DB.Float)
-    text = DB.Column(DB.String(150))
-    business_id = DB.Column(DB.String, 
-                            DB.ForeignKey('business.id'), 
-                            nullable = False)
-    business = DB.relationship('Business', 
-                               backref = DB.backref('reviews', lazy = True))
+#     id = DB.Column(DB.String, primary_key = True)
+#     rating = DB.Column(DB.Float)
+#     text = DB.Column(DB.String(150))
+#     business_id = DB.Column(DB.String, 
+#                             DB.ForeignKey('business.id'), 
+#                             nullable = False)
+#     business = DB.relationship('Business', 
+#                                backref = DB.backref('reviews', lazy = True))
 
-    def __repr__(self):
-        return '<REVIEW {}>'.format(self.text)
-    
-DB.create_all()
+#     def __repr__(self):
+#         return '<REVIEW {}>'.format(self.text)
     
 
