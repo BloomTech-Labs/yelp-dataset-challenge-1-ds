@@ -1,24 +1,35 @@
 # function to pull reviews from yelp.com using API
 
+# API Call & Dataframe Creation
 import requests
 import json
 import pandas as pd
 
+# Loading API Key from .env file
+from dotenv import load_dotenv
+import os
+
+# added code to pull Yelp API Key from .env file
+load_dotenv()
+API_AUTH = os.getenv('api_key')
+
+
 def yelp_business_reviews(business_name, location):
     """
-    function to convert a business's 3 most recent reviews from yelp.com and convert them to a pandas dataframe
+    function to pull a business's 3 most recent reviews from yelp.com and convert them to a pandas dataframe
 
     Args:
         business_name (str): business name on yelp.com; spelling must match spelling on yelp.com
         location (str): business's city, street address, neighborhood, or zipcode on yelp.com; spelling must match spelling on yelp.com
 
     Returns:
-        dataframe: pandas dataframe containing business's name, address, text excerpts from reviews of that business, and the corresponding star ratings of the reviews from a business's 3 most-recent reviews on yelp.com
+        dataframe: pandas dataframe containing business's name, yelp.com business_id, address, text excerpts from reviews of that business, yelp.com review_id, and the corresponding star ratings of the reviews from a business's 3 most-recent reviews on yelp.com
+
 
     """
     try:
         # api key from yelp fusion
-        api_key = 'WSGfAVPznSdlWc0jp5ld1Yeoe2Yks1lNnIGcCIlqhkqNnqTsvDd0MIUXgW_PuFdzlGaiTZlwuLoOyxh1sTFvD79msuRw0UFVyomSkXD2rovavorF4DzmLZ76IO_SXXYx'
+        api_key = API_AUTH
 
         # headers, url, and parameters to pass to GET request
         headers = {'Authorization': 'Bearer {}'.format(api_key)}
@@ -62,8 +73,9 @@ def yelp_business_reviews(business_name, location):
         # drop unnecessary columns
         df = pd.DataFrame(pretty_json['reviews'])
         df['business_name'] = business_name
+        df['business_id'] = business_id
         df['business_location'] = business_location
-        df = df.drop(columns=['id', 'url', 'time_created', 'user'])
+        df = df.drop(columns=['url', 'time_created', 'user'])
 
         # strip .html from 'text' column
         df['text'] = df['text'].str.replace('(\d{1,2}[/. ](?:\d{1,2}|January|Jan)[/. ]\d{2}(?:\d{2})?)', '')
@@ -72,12 +84,14 @@ def yelp_business_reviews(business_name, location):
         df['text'] = df['text'].str.replace('\n', ' ')
 
         # reorganize columns of dataframe
-        # change 'text' column name to 'review_text'
-        cols = ['business_name', 'business_location', 'text', 'rating']
+        # change 'id' column name to 'review_id'
+        cols = ['business_name', 'business_id', 'business_location', 'text', 'id', 'rating']
         df = df[cols]
-        df = df.rename(columns={"text": "review_text"})
+        df = df.rename(columns={"id": "review_id"})
 
         return df
     
     except:
         print('Sorry! Either name or location provided in search was not specific enough for the Yelp API.  Please try again.')
+
+print(yelp_business_reviews("La Piazza","1137 Old Country Rd"))
