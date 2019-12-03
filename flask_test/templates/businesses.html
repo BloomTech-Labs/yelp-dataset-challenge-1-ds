@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    {% if title %}
-        <title>{{ title }}</title>
-    {% else %}
-        <title>Yelp Text Analyzer</title>    
-    {% endif %}
-</head>
-
-<body>
-    <h1>Businesses Page</h1>
-</body>
-
-</html>
+{% extends 'layout.html' %}
+{% block content %}
+    <h1>Businesses</h1>
+{% endblock content %}

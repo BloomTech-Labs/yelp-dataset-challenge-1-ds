@@ -1,0 +1,18 @@
+<!--default template for sections that repeat in all app routes-->
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Yelp Text Analyzer</title>    
+    {% endif %}
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

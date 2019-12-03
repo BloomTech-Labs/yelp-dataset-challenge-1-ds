@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    {% if title %}
-        <title>{{ title }}</title>
-    {% else %}
-        <title>Yelp Text Analyzer</title>    
-    {% endif %}
-</head>
-
-<body>
+{% extends 'layout.html' %}
+{% block content %}
 <!--'posts' variable set in 'render_template' function in app.py-->
     {% for review in reviews %}
         <h1>{{ review.business }}</h1>
@@ -18,6 +7,4 @@
         <p>Review ID: {{ review.review_id }}</p>
         <p>"{{ review.content }}"</p>
     {% endfor %}
-</body>
-
-</html>
+{% endblock content %}

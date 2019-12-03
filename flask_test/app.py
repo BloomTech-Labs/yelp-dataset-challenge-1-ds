@@ -31,12 +31,12 @@ def home():
 # define route for about page
 @app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 # define route for businesses page
 @app.route("/businesses")
 def businesses():
-    return render_template('businesses.html')
+    return render_template('businesses.html', title='Businesses')
 
 # allow app to run using "python app.py" in terminal
 if __name__ == '__main__':
