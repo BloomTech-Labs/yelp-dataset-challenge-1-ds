@@ -4,11 +4,29 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
+posts = [
+    
+    {
+        'author': 'Corey Schafer',
+        'title': 'Blog Post 1',
+        'content': 'First Post Content',
+        'date_posted': 'April 20, 2018'
+    },
+    {
+        'author': 'Ian Forrest',
+        'title': 'Blog Post 1',
+        'content': 'First Post Content',
+        'date_posted': 'April 11, 2019'
+    }
+    
+]
+
 # define route for home page
+# posts = posts give access to data within template
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html')
+    return render_template('home.html', posts=posts)
 
 # define route for about page
 @app.route("/about")
@@ -18,7 +36,7 @@ def about():
 # define route for businesses page
 @app.route("/businesses")
 def businesses():
-    return "<h1>Businesses Page</h1>"
+    return render_template('businesses.html')
 
 # allow app to run using "python app.py" in terminal
 if __name__ == '__main__':
