@@ -37,10 +37,23 @@ def home():
 def about():
     return render_template('about.html', title='About')
 
+# define route for registration
+@app.route("/register")
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', title='Register', form=form)
+
+# define route for login
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Login', form=form)
+
 # define route for businesses page
 @app.route("/businesses")
 def businesses():
-    return render_template('businesses.html', title='Businesses')
+    form = ReviewForm()
+    return render_template('businesses.html', title='Businesses', form=form)
 
 # allow app to run using "python app.py" in terminal
 if __name__ == '__main__':
