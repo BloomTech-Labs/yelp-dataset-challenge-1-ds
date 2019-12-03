@@ -4,19 +4,19 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-posts = [
+reviews = [
     
     {
-        'author': 'Corey Schafer',
-        'title': 'Blog Post 1',
-        'content': 'First Post Content',
+        'business': 'Pizza Palace',
+        'review_id': '1234',
+        'content': 'Good, not great.',
         'date_posted': 'April 20, 2018'
     },
     {
-        'author': 'Ian Forrest',
-        'title': 'Blog Post 1',
-        'content': 'First Post Content',
-        'date_posted': 'April 11, 2019'
+        'business': 'Coffee House',
+        'review_id': '5412',
+        'content': 'The Best!',
+        'date_posted': 'June 20, 2018'
     }
     
 ]
@@ -26,7 +26,7 @@ posts = [
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html', posts=posts)
+    return render_template('home.html', reviews=reviews)
 
 # define route for about page
 @app.route("/about")

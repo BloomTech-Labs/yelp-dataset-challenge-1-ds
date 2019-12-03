@@ -3,15 +3,20 @@
 <html>
 
 <head>
-    <title></title>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Yelp Text Analyzer</title>    
+    {% endif %}
 </head>
 
 <body>
 <!--'posts' variable set in 'render_template' function in app.py-->
-    {% for post in posts %}
-        <h1>{{ post.title }}</h1>
-        <p>By {{ post.author }} on {{ post.date_posted}}</p>
-        <p>{{ post.content }}</p>
+    {% for review in reviews %}
+        <h1>{{ review.business }}</h1>
+        <p>Posted on {{ review.date_posted }}</p>
+        <p>Review ID: {{ review.review_id }}</p>
+        <p>"{{ review.content }}"</p>
     {% endfor %}
 </body>
 
