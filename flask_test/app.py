@@ -1,9 +1,13 @@
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
-
+from forms import RegistrationForm, LoginForm, ReviewForm
 
 app = Flask(__name__)
 
+# secret key from flask app tutorial
+app.config['SECRET_KEY'] = '789531f82597c4e6f638a3c40ac94a6c'
+
+# dummy review data for flask app display testing
 reviews = [
     
     {
