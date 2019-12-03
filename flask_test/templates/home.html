@@ -2,9 +2,15 @@
 {% block content %}
 <!--'posts' variable set in 'render_template' function in app.py-->
     {% for review in reviews %}
-        <h1>{{ review.business }}</h1>
-        <p>Posted on {{ review.date_posted }}</p>
-        <p>Review ID: {{ review.review_id }}</p>
-        <p>"{{ review.content }}"</p>
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                <a class="mr-2" href="#">{{ review.business }}</a>
+                <small class="text-muted">{{ review.date_posted }}</small>
+                </div>
+                <h2><a class="article-title" href="#">Review ID: {{ review.review_id }}</a></h2>
+                <p class="article-content">Review Text: "{{ review.content }}"</p>
+            </div>
+        </article>
     {% endfor %}
 {% endblock content %}
