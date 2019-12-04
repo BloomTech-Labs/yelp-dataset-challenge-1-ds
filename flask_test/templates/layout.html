@@ -29,6 +29,7 @@
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="/">Home</a>
                     <a class="nav-item nav-link" href="/about">About</a>
+                    <a class="nav-item nav-link" href="/review">Test It Yourself!</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
@@ -41,6 +42,15 @@
         <main role="main" class="container">
             <div class="row">
                 <div class="col-md-8">
+                {% with messages = get_flashed_messages(with_categories=true) %} <!--allows us to pass 'success' message from app.route()-->
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 {% block content %}{% endblock %}
                 </div>
                 <div class="col-md-4">

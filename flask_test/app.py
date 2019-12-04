@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm, ReviewForm
 
@@ -38,9 +38,14 @@ def about():
     return render_template('about.html', title='About')
 
 # define route for registration
-@app.route("/register")
+# 'methods=['GET','POST']' allows users to submit forms on the page
+# if there are no errors with registration, display successful account creation message, redirect to homepage
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
 # define route for login
