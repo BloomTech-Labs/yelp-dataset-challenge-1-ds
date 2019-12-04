@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
+from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 
 # adding registration form class
 class RegistrationForm(FlaskForm):
@@ -28,5 +28,5 @@ class ReviewForm(FlaskForm):
     review_text = StringField('Review Text', 
                               validators = [DataRequired()])
     review_rating = IntegerField('Rating',
-                                 validators = [DataRequired()])
+                                 validators = [DataRequired(), NumberRange(min=1, max=5, message="Please enter a whole number between 1 and 5.")])
     submit = SubmitField('Analyze Review Text')

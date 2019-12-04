@@ -49,13 +49,13 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 # define route for login
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     return render_template('login.html', title='Login', form=form)
 
 # define route for manual review entry
-@app.route("/review")
+@app.route("/review", methods=['GET', 'POST'])
 def review():
     form = ReviewForm()
     return render_template('review.html', title='Write Your Own Review!', form=form)
