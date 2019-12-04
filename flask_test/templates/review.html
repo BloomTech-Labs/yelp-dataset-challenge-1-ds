@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action=""> <!--'action="" ' means form will be posted to route app is currently on-->
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Test your own review/rating against our predictor!</legend>
+            <div class="form-group">
+                    {{ form.review_text.label(class="form-control-label") }} <!--classes are bootstrap code to make app look nicer-->
+                    {{ form.review_text(class="form-control form-control-lg") }}
+            </div>
+            <div class="form-group">
+                    {{ form.review_rating.label(class="form-control-label") }} <!--classes are bootstrap code to make app look nicer-->
+                    {{ form.review_rating(class="form-control form-control-lg") }}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btm-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock content %}

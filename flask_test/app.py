@@ -49,11 +49,16 @@ def login():
     form = LoginForm()
     return render_template('login.html', title='Login', form=form)
 
+# define route for manual review entry
+@app.route("/review")
+def review():
+    form = ReviewForm()
+    return render_template('review.html', title='Write Your Own Review!', form=form)
+
 # define route for businesses page
 @app.route("/businesses")
 def businesses():
-    form = ReviewForm()
-    return render_template('businesses.html', title='Businesses', form=form)
+    return render_template('businesses.html', title='Businesses')
 
 # allow app to run using "python app.py" in terminal
 if __name__ == '__main__':
