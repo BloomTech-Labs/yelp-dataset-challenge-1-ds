@@ -1,14 +1,9 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm, ReviewForm
+from flask import render_template, url_for, flash, redirect
+from flask_test import app
+from flask_test.forms import RegistrationForm, LoginForm, ReviewForm
 
-app = Flask(__name__)
-# secret key from flask app tutorial
-app.config['SECRET_KEY'] = '789531f82597c4e6f638a3c40ac94a6c'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-db = SQLAlchemy(app)
 
-# dummy review data for flask app display testing
+# dummy reviews
 reviews = [
     
     {
@@ -25,6 +20,7 @@ reviews = [
     }
     
 ]
+
 
 # define route for home page
 # posts = posts give access to data within template
@@ -71,7 +67,3 @@ def review():
 @app.route("/businesses")
 def businesses():
     return render_template('businesses.html', title='Businesses')
-
-# allow app to run using "python app.py" in terminal
-if __name__ == '__main__':
-    app.run(debug=True)

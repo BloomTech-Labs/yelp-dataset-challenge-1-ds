@@ -1,5 +1,5 @@
 # file to house business and review classes
-from app import db
+from flask_test import db
 
 
 class Business(db.Model):
