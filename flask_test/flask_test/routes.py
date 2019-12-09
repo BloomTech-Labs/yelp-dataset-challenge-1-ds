@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect
-from flask_test import app
+from flask_test import app, db
 from flask_test.forms import RegistrationForm, LoginForm, ReviewForm
+
 
 
 # dummy reviews
@@ -58,9 +59,17 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 # define route for manual review entry
+# redirects to homepage (for now) if review entered successfully
 @app.route("/review", methods=['GET', 'POST'])
 def review():
     form = ReviewForm()
+    if form.validate_on_submit():
+        # add review to sqlite database
+        review = ReviewForm(text=form.review_text.data, rating=form.review_rating.data)
+        db.session.add(review)
+        db.session.commit()
+        flash(f'Review added to database!', 'success')
+        return redirect(url_for('review'))
     return render_template('review.html', title='Write Your Own Review!', form=form)
 
 # define route for businesses page

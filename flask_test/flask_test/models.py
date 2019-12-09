@@ -27,12 +27,15 @@ class Review(db.Model):
     Business has methods:
     - id
     - text
+    - rating
+    - business_id (if review is pulled through yelp API)
     
     added __repr__ function to show content of Review class as text (vs. as location in memory)"""
     
     id = db.Column(db.String(), primary_key = True)
     text = db.Column(db.Text(), nullable = False)
-    business_id = db.Column(db.String(), db.ForeignKey('business.id'), nullable = False)
+    rating = db.Column(db.Integer(), nullable = False)
+    business_id = db.Column(db.String(), db.ForeignKey('business.id'))
     
     def __repr__(self):
         return '<TEXT {}>'.format(self.text)
