@@ -3,25 +3,25 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, Integ
 from wtforms.validators import DataRequired, Length, Email, EqualTo, NumberRange
 
 # adding registration form class
-class RegistrationForm(FlaskForm):
-    username = StringField('Username', 
-                           validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField('Email',
-                        validators = [DataRequired(), Email()])
-    password = PasswordField('Password', 
-                             validators = [DataRequired()])
-    confirm_password = PasswordField('Confirm Password', 
-                             validators = [DataRequired(), EqualTo('password')])
-    submit = SubmitField('Sign Up')
+# class RegistrationForm(FlaskForm):
+#     username = StringField('Username', 
+#                            validators=[DataRequired(), Length(min=2, max=20)])
+#     email = StringField('Email',
+#                         validators = [DataRequired(), Email()])
+#     password = PasswordField('Password', 
+#                              validators = [DataRequired()])
+#     confirm_password = PasswordField('Confirm Password', 
+#                              validators = [DataRequired(), EqualTo('password')])
+#     submit = SubmitField('Sign Up')
 
 # adding login form class
-class LoginForm(FlaskForm):
-    email = StringField('Email',
-                        validators = [DataRequired(), Email()])
-    password = PasswordField('Password', 
-                             validators = [DataRequired()])
-    remember = BooleanField('Remember Me')
-    submit = SubmitField('Login')
+# class LoginForm(FlaskForm):
+#     email = StringField('Email',
+#                         validators = [DataRequired(), Email()])
+#     password = PasswordField('Password', 
+#                              validators = [DataRequired()])
+#     remember = BooleanField('Remember Me')
+#     submit = SubmitField('Login')
     
 # adding review form class
 class ReviewForm(FlaskForm):
