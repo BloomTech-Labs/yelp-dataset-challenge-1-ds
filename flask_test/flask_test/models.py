@@ -55,4 +55,4 @@ class UserReview(db.Model):
     rating = db.Column(db.Integer, nullable = False)
     
     def __repr__(self):
-        return '<TEXT {}>'.format(self.text)
+        return f"Review('{self.text}', '{self.rating}')"
