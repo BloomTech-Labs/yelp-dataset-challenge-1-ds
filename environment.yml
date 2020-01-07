@@ -317,5 +317,4 @@ dependencies:
     - en-core-web-lg==2.0.0
     - pprintpp==0.4.0
     - python-decouple==3.3
-prefix: /home/ec2-user/anaconda3/envs/ydc1
-
+#prefix: /home/ec2-user/anaconda3/envs/ydc1
