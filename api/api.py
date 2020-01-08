@@ -90,7 +90,6 @@ def yelp_business_reviews(business_name, location):
         df = df.rename(columns={"id": "review_id"})
 
         return df
-    
     except:
         print('Sorry! Either name or location provided in search was not specific enough for the Yelp API.  Please try again.')
 
