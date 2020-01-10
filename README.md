@@ -20,8 +20,6 @@ This project was made for Lambda School Labs18.
 The Yelp Review Interaction Predictor was made for aspiring Yelp Reviewers or "Yelpers" to enter in their draft reviews to see the potential interaction votes they might receive. 
 
 ### Tech Stack
-
-🚫 List all of the languages, frameworks, services, etc used here.
 - Python 
   - Pandas
    - Scikit-learn
